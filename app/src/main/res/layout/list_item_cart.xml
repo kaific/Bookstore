@@ -36,13 +36,13 @@
         android:paddingTop="4dp"
         android:paddingBottom="2dp" />
 
-    <LinearLayour
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button_add"
+            android:id="@+id/add_one"
             android:text="Add"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -54,7 +54,7 @@
         />
 
         <Button
-            android:id="@+id/button_remove"
+            android:id="@+id/remove_one"
             android:text="Remove"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -65,6 +65,6 @@
             android:paddingBottom="2dp"
         />
 
-    </LinearLayour>
+    </LinearLayout>
 
 </LinearLayout>

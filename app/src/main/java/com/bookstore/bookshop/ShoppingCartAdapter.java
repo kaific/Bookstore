@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,8 +28,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             mBook = v.findViewById(R.id.book);
             mQuantity = v.findViewById(R.id.quantity);
             mTotalPrice = v.findViewById(R.id.price);
-            mAddButton = v.findViewById(R.id.button_add);
-            mRemoveButton = v.findViewById(R.id.button_remove);
+            mAddButton = v.findViewById(R.id.add_one);
+            mRemoveButton = v.findViewById(R.id.remove_one);
         }
     }
 
@@ -50,7 +50,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ShoppingCartItem c = mItems.get(position);
-        holder.mBook.setText(c.getBook().getTitle());
+        holder.mBook.setText((CharSequence) c.getBook().getTitle());
         holder.mQuantity.setText("quantity : " + c.getQuantity());
         holder.mTotalPrice.setText("price : " + c.getTotalPrice());
 

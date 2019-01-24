@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
@@ -10,37 +10,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.List;
-
-public class ShoppingCartActivity extends AppCompatActivity{
-
-    private boolean mTwoPane = false;
-    private Book mSelectedBook = null;
-
+public class BookDetailActivity extends AppCompatActivity {
+    private int book_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //take view object and put on screen
-        // -> android view hierarchy
-        //display layout file
-        //layout = xml file
-        //2 files, android will choose which one depending on resolution
-
-        //android starts -> manifest file -> activity with two properties
-        //launcher activity for this app
-        //instance of main activity class -> invoke onCreate method
-        //when you launch an activity there is a lifecycle that tells you the order of methods
+        setContentView(R.layout.activity_book_detail);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Shopping Cart");
+        actionBar.setTitle("Bookstore");
 
-        int savedBookId = -1;
-        if (savedInstanceState != null) {
-            savedBookId = savedInstanceState.getInt(BookDetailFragment.EXTRA_BOOK_ID, -1);
-        }
+        Intent intent = getIntent();
+        book_id = intent.getIntExtra(BookDetailFragment.EXTRA_BOOK_ID, -1);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.book_details_one_pane, BookDetailFragment.newInstance(book_id));
+        ft.commit();
     }
 
-    // displays the menu bar with shopping cart
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -49,10 +36,9 @@ public class ShoppingCartActivity extends AppCompatActivity{
         return true;
     }
 
-    // lets user know they clicked button in menu bar with message
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.action_shoppingCart:
                 Toast.makeText(this, "Shopping Cart selected", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, ShoppingCartActivity.class);

@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,40 +11,44 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class ShoppingCartFragment extends Fragment {
+public class BookListFragment extends Fragment {
+
     public interface ItemListener {
-        public void itemSelected(ShoppingCartItem cartItem);
+        void itemSelected(Book b);
     }
 
-    private ShoppingCartActivity mActivity = null;
+    private MainActivity mActivity = null;
 
-    public ShoppingCartFragment() {}
+    public BookListFragment() {}
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof ShoppingCartFragment.ItemListener){
-            this.mActivity = (ShoppingCartActivity) context;
+        if (context instanceof ItemListener){
+            this.mActivity = (MainActivity) context;
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        return inflater.inflate(R.layout.fragment_book_list, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView mRecyclerView = view.findViewById(R.id.shopping_cart_view);
+        RecyclerView mRecyclerView = view.findViewById(R.id.book_list_view);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mActivity);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        List<ShoppingCartItem> items = Model.getInstance(mActivity).getShoppingCart().getItems();
+        List<Book> books = Model.getInstance(mActivity).getBooks();
 
-        RecyclerView.Adapter adapter = new ShoppingCartAdapter(mActivity, items);
+        RecyclerView.Adapter adapter = new BookListAdapter(mActivity, books);
         mRecyclerView.setAdapter(adapter);
+
+        String url = "http://10.0.2.2/BookstoreWebApp/api/books";
+        Model.getInstance(mActivity).requestBooks(adapter, url);
     }
 }

@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 class Book {
     private int id;
@@ -17,9 +17,7 @@ class Book {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public String getTitle() {
         return title;

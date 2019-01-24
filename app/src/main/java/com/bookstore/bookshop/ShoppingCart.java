@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         //grab linear layout view object, if not null it's found
         if (mTwoPane && mSelectedBook != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.book_details_two_pane, //add into framelayout
-                    BookDetailFragment.newInstance(mSelectedBook.getId()));
+            ft.replace(R.id.book_details_two_pane, BookDetailFragment.newInstance(mSelectedBook.getId())); //add into framelayout
             ft.commit(); //screen updates once it's committed
         }
     }

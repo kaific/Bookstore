@@ -4,13 +4,15 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookListActivity">
+    tools:context=".MainActivity">
 
-    <fragment android:name="com.bookstore.listview.BookListFragment"
+    <fragment android:name="com.bookstore.bookshop.BookListFragment"
         android:id="@+id/book_list_fragment"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
+
+
 
     <FrameLayout
         android:id="@+id/book_details_two_pane"

@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,7 +50,7 @@ public class BookDetailFragment extends Fragment {
         TextView mIsbnTextView = view.findViewById(R.id.book_isbn);
         TextView mYearTextView = view.findViewById(R.id.book_year);
         TextView mPriceTextView = view.findViewById(R.id.book_price);
-        Button addToCartButton = view.findViewById(R.id.button_add_to_cart);
+        Button addToCartButton = (Button) view.findViewById(R.id.button_add_to_cart);
 
         if (mBook != null) {
             mTitleTextView.setText(mBook.getTitle());

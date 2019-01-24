@@ -1,4 +1,4 @@
-package com.bookstore.listview;
+package com.bookstore.bookshop;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import java.util.List;
 
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
     private List<Book> mBooks;
+    private MainActivity mActivity;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -25,8 +26,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
             mAuthorTextView = v.findViewById(R.id.author);
         }
     }
-
-    private MainActivity mActivity;
 
     public BookListAdapter(MainActivity activity, List<Book> books) {
         mActivity = activity;
